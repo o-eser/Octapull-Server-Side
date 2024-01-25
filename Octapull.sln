@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{2662C81C-6782-4A6B-BD55-6B43F80C4B9B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{A44B8BD8-82B0-49CF-BF44-52BE60581778}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{7F44E609-4434-48E2-B151-73F4E516E189}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octapull.Application", "Octapull.Application\Octapull.Application.csproj", "{03CE43D2-4BC3-4695-A633-0022BEA18F18}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octapull.Domain", "Octapull.Domain\Octapull.Domain.csproj", "{423B2301-FCC2-4537-97F4-1910230D1FF5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octapull.Infrastructure", "Octapull.Infrastructure\Octapull.Infrastructure.csproj", "{8646D02D-B7F5-41A7-B73B-0B35087D5A32}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octapull.Persistence", "Octapull.Persistence\Octapull.Persistence.csproj", "{3962FC98-FB7A-4856-BAF0-EE96FAAADB97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OctaPull.API", "OctaPull.API\OctaPull.API.csproj", "{8D65C889-972C-43AC-8973-07EC9923AD96}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03CE43D2-4BC3-4695-A633-0022BEA18F18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03CE43D2-4BC3-4695-A633-0022BEA18F18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03CE43D2-4BC3-4695-A633-0022BEA18F18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03CE43D2-4BC3-4695-A633-0022BEA18F18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{423B2301-FCC2-4537-97F4-1910230D1FF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{423B2301-FCC2-4537-97F4-1910230D1FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{423B2301-FCC2-4537-97F4-1910230D1FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{423B2301-FCC2-4537-97F4-1910230D1FF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8646D02D-B7F5-41A7-B73B-0B35087D5A32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8646D02D-B7F5-41A7-B73B-0B35087D5A32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8646D02D-B7F5-41A7-B73B-0B35087D5A32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8646D02D-B7F5-41A7-B73B-0B35087D5A32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3962FC98-FB7A-4856-BAF0-EE96FAAADB97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3962FC98-FB7A-4856-BAF0-EE96FAAADB97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3962FC98-FB7A-4856-BAF0-EE96FAAADB97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3962FC98-FB7A-4856-BAF0-EE96FAAADB97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D65C889-972C-43AC-8973-07EC9923AD96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D65C889-972C-43AC-8973-07EC9923AD96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D65C889-972C-43AC-8973-07EC9923AD96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D65C889-972C-43AC-8973-07EC9923AD96}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{03CE43D2-4BC3-4695-A633-0022BEA18F18} = {2662C81C-6782-4A6B-BD55-6B43F80C4B9B}
+		{423B2301-FCC2-4537-97F4-1910230D1FF5} = {2662C81C-6782-4A6B-BD55-6B43F80C4B9B}
+		{8646D02D-B7F5-41A7-B73B-0B35087D5A32} = {A44B8BD8-82B0-49CF-BF44-52BE60581778}
+		{3962FC98-FB7A-4856-BAF0-EE96FAAADB97} = {A44B8BD8-82B0-49CF-BF44-52BE60581778}
+		{8D65C889-972C-43AC-8973-07EC9923AD96} = {7F44E609-4434-48E2-B151-73F4E516E189}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F06B2D68-480C-4838-BDBC-1FD41B78D192}
+	EndGlobalSection
+EndGlobal
