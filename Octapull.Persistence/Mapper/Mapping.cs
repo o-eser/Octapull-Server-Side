@@ -17,6 +17,7 @@ namespace Octapull.Persistence.Mapper
 			CreateMap<Meeting,MeetingVM>().ReverseMap();
 			CreateMap<Meeting,CreateMeetingDTO>().ReverseMap();
 			CreateMap<Meeting,UpdateMeetingDTO>().ReverseMap();
+			CreateMap<User,RegisterDTO>().ReverseMap();
 		}
 	}
 }

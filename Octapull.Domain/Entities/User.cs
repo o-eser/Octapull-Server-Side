@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Octapull.Domain.Entities.Common;
 using Octapull.Domain.Entities.Common.Abstract;
+using Octapull.Domain.Enums;
 
 namespace Octapull.Domain.Entities
 {
-	public class User : IdentityUser<Guid>, IBaseEntity
+    public class User : IdentityUser<Guid>, IBaseEntity
 	{
 		public string Name { get; set; }
         public string Surname { get; set; }
-        public string Email { get; set; }
-		public string Phone { get; set; }
-		public string PasswordHash { get; set; }
 		public Guid PictureId { get; set; }
 		public DateTime CreatedDate { get; set; }
 		public DateTime? LastModifiedDate { get; set; }

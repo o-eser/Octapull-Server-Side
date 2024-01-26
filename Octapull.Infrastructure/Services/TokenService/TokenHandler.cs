@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Octapull.Application.Abstraction.Services.Token;
 using Octapull.Application.Models.DTOs;
+using Octapull.Domain.Entities;
 
 namespace Octapull.Infrastructure.Services.TokenService
 {
@@ -20,27 +23,48 @@ namespace Octapull.Infrastructure.Services.TokenService
 			_configuration = configuration;
 		}
 
-		public Token CreateAccessToken(int minute, string username, string password)
+		public Token CreateAccessToken(int second, User user)
 		{
-			Token token = new Token();
+			var authClaims = new List<Claim>
+				{
+					new Claim(ClaimTypes.Email, user.Email),
+					new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+					new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+					new Claim(ClaimTypes.Name, user.Name),
+					new Claim(ClaimTypes.Surname, user.Surname),
+                };
 
-			SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:secretKey"]));
 
-			SigningCredentials credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+			//var userRoles = await _personnelService.GetRoles(model.Email);
 
-			token.AccessTokenExpiration = DateTime.UtcNow.AddMinutes(minute);
+			//if (userRoles.Length == 0)
+			//	return Unauthorized("Kullanıcının Rolü mevcut değil");
 
-			JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
-					issuer: _configuration["JwtSettings:validIssuer"],
-					audience: _configuration["JwtSettings:validAudience"],
-					expires: token.AccessTokenExpiration,
-					notBefore: DateTime.UtcNow,
-					signingCredentials: credentials
-				);
+			//foreach (var userRole in userRoles)
+			//{
+			//	authClaims.Add(new Claim(ClaimTypes.Role, userRole));
+			//}
 
-			JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+			var token = GetToken(authClaims);
 
-			tokenHandler.WriteToken(jwtSecurityToken);
+
+			return new Token { 
+			AccessToken = new JwtSecurityTokenHandler().WriteToken(token),
+			AccessTokenExpiration=token.ValidTo,
+			};
+		}
+
+		private JwtSecurityToken GetToken(List<Claim> authClaims)
+		{
+			var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:secretKey"]));
+			var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+			var token = new JwtSecurityToken(
+				_configuration["JwtSettings:validIssuer"],
+				_configuration["JwtSettings:validAudience"],
+				authClaims,
+				expires: DateTime.Now.AddMinutes(15),
+				signingCredentials: signIn);
+
 			return token;
 		}
 	}

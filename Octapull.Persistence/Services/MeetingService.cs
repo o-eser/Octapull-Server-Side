@@ -3,37 +3,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Octapull.Application.Abstraction.Services;
 using Octapull.Application.Models.DTOs;
 using Octapull.Application.Models.VMs;
+using Octapull.Application.Repositories;
+using Octapull.Domain.Entities;
+using Octapull.Persistence.Repositories;
 
 namespace Octapull.Persistence.Services
 {
 	public class MeetingService : IMeetingService
 	{
-		public Task<CreateMeetingDTO> CreateMeeting(CreateMeetingDTO meeting)
+		readonly IMapper _mapper;
+		readonly IMeetingReadRepository _meetingReadRepository;
+		readonly IMeetingWriteRepository _meetingWriteRepository;
+
+
+		public MeetingService(IMapper mapper, IMeetingReadRepository meetingReadRepository, IMeetingWriteRepository meetingWriteRepository)
 		{
-			throw new NotImplementedException();
+			_mapper = mapper;
+			_meetingReadRepository = meetingReadRepository;
+			_meetingWriteRepository = meetingWriteRepository;
 		}
 
-		public Task DeleteMeeting(string id)
+		public async Task<bool> CreateMeeting(CreateMeetingDTO meeting)
 		{
-			throw new NotImplementedException();
+			await _meetingWriteRepository.AddAsync(_mapper.Map<Meeting>(meeting));
+			return await _meetingWriteRepository.SaveAsync()>0;
 		}
 
-		public Task<IEnumerable<MeetingVM>> GetMeetingsByOrganizerId(string userId)
+		public async Task<bool> DeleteMeeting(string id)
 		{
-			throw new NotImplementedException();
+			await _meetingWriteRepository.RemoveAsync(id);
+			return await _meetingWriteRepository.SaveAsync()>0;
 		}
 
-		public Task<IEnumerable<MeetingVM>> GetMeetingsByUserId(string userId)
+		public IEnumerable<MeetingVM> GetMeetingsByOrganizerId(string userId)
 		{
-			throw new NotImplementedException();
+			return _mapper.Map<IEnumerable<MeetingVM>>(_meetingReadRepository.GetWhere(x => x.Id == Guid.Parse(userId), false));
 		}
 
-		public Task<UpdateMeetingDTO> UpdateMeeting(UpdateMeetingDTO meeting)
+		public IEnumerable<MeetingVM> GetMeetingsByUserId(string userId)
 		{
-			throw new NotImplementedException();
+			return _mapper.Map<IEnumerable<MeetingVM>>(_meetingReadRepository.GetWhere(x => x.Id == Guid.Parse(userId), false));
+		}
+		public IEnumerable<MeetingVM> GetAllMeetings()
+		{
+			return _mapper.Map<IEnumerable<MeetingVM>>(_meetingReadRepository.GetAll());
+		}
+
+		public async Task<bool> UpdateMeeting(UpdateMeetingDTO meeting)
+		{
+			_meetingWriteRepository.Update(_mapper.Map<Meeting>(meeting));
+			return await _meetingWriteRepository.SaveAsync()>0;
 		}
 	}
 }

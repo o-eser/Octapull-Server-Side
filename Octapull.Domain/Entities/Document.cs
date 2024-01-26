@@ -9,6 +9,9 @@ namespace Octapull.Domain.Entities
 	public class Document : File
 	{
 		public Guid MeetingId { get; set; }
-		public Meeting Meeting { get; set; }
+        public Guid UserId { get; set; }
+
+        public Meeting Meeting { get; set; }
+        public User User { get; set; }
     }
 }

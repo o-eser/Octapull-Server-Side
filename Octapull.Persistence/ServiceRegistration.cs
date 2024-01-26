@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Octapull.Application.Abstraction.Services;
+using Octapull.Application.Abstraction.Services.Token;
 using Octapull.Application.Repositories;
 using Octapull.Domain.Entities;
 using Octapull.Persistence.Contexts;
@@ -51,6 +52,7 @@ namespace Octapull.Persistence
 			services.AddScoped<IProfilePictureWriteRepository, ProfilePictureWriteRepository>();
 
 			services.AddScoped<IMeetingService, MeetingService>();
+			services.AddScoped<IAccountService, AccountService>();
 
 			services.AddAutoMapper(typeof(Mapping));
 

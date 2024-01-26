@@ -12,8 +12,8 @@ using Octapull.Persistence.Contexts;
 namespace Octapull.Persistence.Migrations
 {
     [DbContext(typeof(OctapullDbContext))]
-    [Migration("20240125111842_mig-1")]
-    partial class mig1
+    [Migration("20240126112738_mig-3")]
+    partial class mig3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -227,18 +227,18 @@ namespace Octapull.Persistence.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<Guid>("OrganizerId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
+                    b.HasIndex("OrganizerId")
                         .IsUnique();
 
                     b.ToTable("Meetings");
@@ -264,7 +264,6 @@ namespace Octapull.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -297,12 +296,6 @@ namespace Octapull.Persistence.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
@@ -460,7 +453,7 @@ namespace Octapull.Persistence.Migrations
                 {
                     b.HasOne("Octapull.Domain.Entities.User", "Organizer")
                         .WithOne("Meeting")
-                        .HasForeignKey("Octapull.Domain.Entities.Meeting", "UserId")
+                        .HasForeignKey("Octapull.Domain.Entities.Meeting", "OrganizerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

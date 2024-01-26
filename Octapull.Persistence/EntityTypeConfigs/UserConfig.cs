@@ -21,12 +21,6 @@ namespace Octapull.Persistence.EntityTypeConfigs
 			builder.Property(u => u.Surname)
 				.IsRequired()
 				.HasMaxLength(15);
-			builder.Property(u => u.Email)
-				.IsRequired()
-				.HasMaxLength(50);
-			builder.Property(u => u.PasswordHash)
-				.IsRequired()
-				.HasMaxLength(50);
 			builder.Property(u => u.PhoneNumber)
 				.HasMaxLength(20);
 

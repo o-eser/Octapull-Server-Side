@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Octapull.Domain;
 using Octapull.Domain.Entities;
 using Octapull.Domain.Entities.Common.Abstract;
 using Octapull.Domain.Entities.Common.Concrete;
+using Octapull.Domain.Enums;
 using Octapull.Persistence.EntityTypeConfigs;
 using F = Octapull.Domain.Entities;
 
 namespace Octapull.Persistence.Contexts
 {
-	public class OctapullDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
+    public class OctapullDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 	{
 		public OctapullDbContext(DbContextOptions<OctapullDbContext> options) : base(options) { }
 		public DbSet<F::File> Files { get; set; }

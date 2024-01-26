@@ -14,5 +14,6 @@ namespace Octapull.Domain.Entities
 
 		public User User { get; set; }
 		public Meeting Meeting { get; set; }
+
 	}
 }

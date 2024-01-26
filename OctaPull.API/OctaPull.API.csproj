@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Octapull.Infrastructure\Octapull.Infrastructure.csproj" />
     <ProjectReference Include="..\Octapull.Persistence\Octapull.Persistence.csproj" />
   </ItemGroup>
 

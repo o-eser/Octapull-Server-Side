@@ -10,10 +10,11 @@ namespace Octapull.Application.Abstraction.Services
 {
 	public interface IMeetingService
 	{
-		Task<CreateMeetingDTO> CreateMeeting(CreateMeetingDTO meeting);
-		Task<UpdateMeetingDTO> UpdateMeeting(UpdateMeetingDTO meeting);
-		Task DeleteMeeting(string id);
-		Task<IEnumerable<MeetingVM>> GetMeetingsByOrganizerId(string userId);
-		Task<IEnumerable<MeetingVM>> GetMeetingsByUserId(string userId);
+		Task<bool> CreateMeeting(CreateMeetingDTO meeting);
+		Task<bool> UpdateMeeting(UpdateMeetingDTO meeting);
+		Task<bool> DeleteMeeting(string id);
+		IEnumerable<MeetingVM> GetMeetingsByOrganizerId(string userId);
+		IEnumerable<MeetingVM> GetMeetingsByUserId(string userId);
+		IEnumerable<MeetingVM> GetAllMeetings();
 	}
 }

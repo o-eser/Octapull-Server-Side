@@ -1,6 +1,9 @@
-﻿namespace Octapull.Persistence.Repositories
+﻿using Octapull.Application.Repositories;
+using Octapull.Domain.Entities;
+
+namespace Octapull.Persistence.Repositories
 {
-	internal interface IMeetingWriteRepository
+	public interface IMeetingWriteRepository : IWriteRepository<Meeting>
 	{
 	}
 }

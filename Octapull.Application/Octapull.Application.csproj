@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Octapull.Domain\Octapull.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+  </ItemGroup>
+
 </Project>

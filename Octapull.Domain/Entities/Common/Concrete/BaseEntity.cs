@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Octapull.Domain.Entities.Common.Abstract;
+using Octapull.Domain.Enums;
 
 namespace Octapull.Domain.Entities.Common.Concrete
 {
-	public class BaseEntity : IBaseEntity
+    public class BaseEntity : IBaseEntity
 	{
 		public Guid Id { get; set; }
 		virtual public DateTime CreatedDate { get; set; }
