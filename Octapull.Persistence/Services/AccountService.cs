@@ -31,10 +31,10 @@ namespace Octapull.Persistence.Services
 
 		public async Task<Token> Login(LoginDTO login)
 		{
-			User user = await _userManager.FindByNameAsync(login.EmailOrUserName);
+			User user = await _userManager.FindByNameAsync(login.UserNameorEmail);
 
 			if (user == null)
-				user = await _userManager.FindByEmailAsync(login.EmailOrUserName);
+				user = await _userManager.FindByEmailAsync(login.UserNameorEmail);
 
 			if (user == null)
 				throw new NotFoundUserException();

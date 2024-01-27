@@ -8,7 +8,7 @@ namespace Octapull.Application.Models.DTOs
 {
 	public class LoginDTO
 	{
-		public string EmailOrUserName { get; set; }
+		public string UserNameorEmail { get; set; }
 		public string Password { get; set; }
 	}
 }

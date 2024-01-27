@@ -39,7 +39,6 @@ namespace OctaPull.API.Controllers
 		}
 
 		[HttpPost]
-		[Route("Create")]
 		public async Task<IActionResult> Create(CreateMeetingDTO meeting)
 		{
 			return Ok(await _meetingService.CreateMeeting(meeting));

@@ -17,23 +17,18 @@ namespace OctaPull.API.Controllers
 		}
 
 		[HttpPost]
-		[Route("Register")]
 		public async Task<IActionResult> Register(RegisterDTO register)
 		{
 			CreateUserResponse response = await _accountService.Register(register);
 
-			return Ok(new CreateUserResponse
-			{
-				Message = response.Message,
-				Succeeded = response.Succeeded,
-			});
+			return Ok(response);
 		}
 
 		[HttpPost]
 		[Route("Login")]
 		public async Task<IActionResult> Login(LoginDTO login)
 		{
-			Token token= await _accountService.Login(login);
+			Token token = await _accountService.Login(login);
 			if (token.AccessToken == null)
 			{
 				return Unauthorized();
